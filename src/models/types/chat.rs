@@ -1,4 +1,7 @@
-use super::{message::Message, Type};
+use super::{
+    chat_location::ChatLocation, chat_permissions::ChatPermissions, chat_photo::ChatPhoto,
+    message::Message, Type,
+};
 
 pub struct Chat {
     id: i64,

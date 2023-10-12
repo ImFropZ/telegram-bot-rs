@@ -1,4 +1,7 @@
-use super::user::User;
+use super::{
+    animation::Animation, chat::Chat, message_entity::MessageEntity, photo_size::PhotoSize,
+    user::User,
+};
 
 pub struct Message {
     message_id: u32,
