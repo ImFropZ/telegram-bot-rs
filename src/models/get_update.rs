@@ -28,7 +28,8 @@ struct Entity {
 
 #[derive(Serialize, Deserialize)]
 struct Message {
-    message_id: i64,
+    message_id: u32,
+    message_thread_id: u32,
     from: User,
     chat: Chat,
     date: i64,
@@ -37,7 +38,7 @@ struct Message {
 
 #[derive(Serialize, Deserialize)]
 pub struct GetUpdate {
-    update_id: i64,
+    update_id: u64,
     message: Message,
     entrities: Vec<Entity>,
 }

@@ -1,10 +1,10 @@
+mod controllers;
 mod models;
 mod tests;
 
 mod telegram_bot {
-    use crate::models::{
-        get_me::GetMe, get_update::GetUpdate, telegram_response::TelegramResponse,
-    };
+    use crate::controllers::authentication::{Authentication, AuthenticationService};
+    use crate::models::{get_me::GetMe, get_update::GetUpdate};
     use async_trait::async_trait;
     use reqwest;
     use reqwest::Error;
@@ -16,8 +16,9 @@ mod telegram_bot {
     #[async_trait]
     pub trait TelegramBotService {
         fn new(app_id: String) -> TelegramBot;
-        async fn authenticate(&self) -> Result<TelegramResponse<GetMe>, Error>;
-        async fn get_chats(&self) -> Result<TelegramResponse<Vec<GetUpdate>>, Error>;
+        fn get_app_id(&self) -> String;
+        async fn authenticate(&self) -> Result<GetMe, Error>;
+        async fn get_chats(&self) -> Result<Vec<GetUpdate>, Error>;
     }
 
     #[async_trait]
@@ -26,19 +27,19 @@ mod telegram_bot {
             TelegramBot { app_id }
         }
 
-        async fn authenticate(&self) -> Result<TelegramResponse<GetMe>, Error> {
-            let endpoint = format!("https://api.telegram.org/bot{}/getMe", self.app_id);
-            let response = reqwest::Client::new().get(&endpoint).send().await.unwrap();
-
-            let getme = response.json::<TelegramResponse<GetMe>>().await?;
-            Ok(getme)
+        fn get_app_id(&self) -> String {
+            return self.app_id.clone();
         }
 
-        async fn get_chats(&self) -> Result<TelegramResponse<Vec<GetUpdate>>, Error> {
+        async fn authenticate(&self) -> Result<GetMe, Error> {
+            Authentication::new(self).authenticate().await
+        }
+
+        async fn get_chats(&self) -> Result<Vec<GetUpdate>, Error> {
             let endpoint = format!("https://api.telegram.org/bot{}/getUpdates", self.app_id);
             let response = reqwest::Client::new().get(&endpoint).send().await?;
 
-            return response.json::<TelegramResponse<Vec<GetUpdate>>>().await;
+            return response.json::<Vec<GetUpdate>>().await;
         }
     }
 }

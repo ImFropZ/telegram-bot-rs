@@ -2,13 +2,13 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
 pub struct TelegramResponse<T> {
-    ok: bool,
-    result: Vec<T>,
+    pub ok: bool,
+    pub result: T,
 }
 
 #[derive(Serialize, Deserialize)]
 pub struct TelegramErrorResponse {
-    ok: bool,
-    error_code: i32,
-    description: String,
+    pub ok: bool,
+    pub error_code: i32,
+    pub description: String,
 }
