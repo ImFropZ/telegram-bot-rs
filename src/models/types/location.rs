@@ -1,8 +1,8 @@
 pub struct Location {
-    longtitude: f32,
-    latitude: f32,
-    horizontal_accuracy: Option<f32>,
-    live_period: Option<i32>,
-    heading: Option<i32>,
-    proximity_alert_radius: Option<i32>,
+    pub longtitude: f32,
+    pub latitude: f32,
+    pub horizontal_accuracy: Option<f32>,
+    pub live_period: Option<i32>,
+    pub heading: Option<i32>,
+    pub proximity_alert_radius: Option<i32>,
 }

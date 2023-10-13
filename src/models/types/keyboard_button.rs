@@ -1,4 +1,4 @@
-use super::{web_app::WebAppInfo, chat::ChatAdministratorRights};
+use super::{chat::ChatAdministratorRights, web_app::WebAppInfo};
 
 pub struct KeyboardButton {
     pub text: String,
@@ -11,7 +11,7 @@ pub struct KeyboardButton {
 }
 
 pub struct KeyboardButtonPollType {
-  pub r#type: Option<String>,
+    pub r#type: Option<String>,
 }
 
 pub struct KeyboardButtonRequestUser {

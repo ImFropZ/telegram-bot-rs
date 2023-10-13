@@ -1,4 +1,4 @@
 pub struct Dice {
-    emoji: String,
-    value: u32,
+    pub emoji: String,
+    pub value: u32,
 }

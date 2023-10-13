@@ -124,8 +124,8 @@ pub struct ChatMemberUpdated {
 }
 
 pub struct ChatLocation {
-    location: Location,
-    address: String,
+pub location: Location,
+pub address: String,
 }
 
 pub struct ChatPermissions {

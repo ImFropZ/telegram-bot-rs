@@ -1,7 +1,7 @@
 use super::user::User;
 
 pub struct ProximityAlertTriggered {
-    traveler: User,
-    watcher: User,
-    distance: u32,
+    pub traveler: User,
+    pub watcher: User,
+    pub distance: u32,
 }

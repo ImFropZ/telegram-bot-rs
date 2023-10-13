@@ -1,29 +1,29 @@
-use super::{message::MessageEntity, chat::Chat, user::User};
+use super::{chat::Chat, message::MessageEntity, user::User};
 
 pub struct Poll {
-    id: String,
-    question: String,
-    options: Vec<PollOption>,
-    total_voter_count: u32,
-    is_closed: bool,
-    is_anonymous: bool,
-    r#type: String,
-    allows_multiple_answers: bool,
-    correct_option_id: Option<u32>,
-    explanation: Option<String>,
-    explanation_entities: Option<Vec<MessageEntity>>,
-    open_period: Option<u32>,
-    close_date: Option<u32>,
+    pub id: String,
+    pub question: String,
+    pub options: Vec<PollOption>,
+    pub total_voter_count: u32,
+    pub is_closed: bool,
+    pub is_anonymous: bool,
+    pub r#type: String,
+    pub allows_multiple_answers: bool,
+    pub correct_option_id: Option<u32>,
+    pub explanation: Option<String>,
+    pub explanation_entities: Option<Vec<MessageEntity>>,
+    pub open_period: Option<u32>,
+    pub close_date: Option<u32>,
 }
 
 pub struct PollAnswer {
-    poll_id: String,
-    voter_chat: Chat,
-    user: User,
-    option_ids: Vec<u32>,
+    pub poll_id: String,
+    pub voter_chat: Chat,
+    pub user: User,
+    pub option_ids: Vec<u32>,
 }
 
 pub struct PollOption {
-    text: String,
-    voter_count: u32,
+    pub text: String,
+    pub voter_count: u32,
 }

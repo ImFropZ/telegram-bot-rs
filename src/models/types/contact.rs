@@ -1,7 +1,7 @@
 pub struct Contact {
-    phone_number: String,
-    first_name: String,
-    last_name: Option<String>,
-    user_id: Option<u32>,
-    vcard: Option<String>,
+    pub phone_number: String,
+    pub first_name: String,
+    pub last_name: Option<String>,
+    pub user_id: Option<u32>,
+    pub vcard: Option<String>,
 }
