@@ -1,3 +1,5 @@
+use super::keyboard_button::KeyboardButton;
+
 pub struct ReplayKeyboardMarkup {
     pub keyboard: Vec<Vec<KeyboardButton>>,
     pub is_persistent: Option<bool>,

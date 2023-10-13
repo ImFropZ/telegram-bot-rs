@@ -1,4 +1,4 @@
-use super::{web_app_info::WebAppInfo, chat::ChatAdministratorRights};
+use super::{web_app::WebAppInfo, chat::ChatAdministratorRights};
 
 pub struct KeyboardButton {
     pub text: String,

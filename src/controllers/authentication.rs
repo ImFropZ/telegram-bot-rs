@@ -17,7 +17,7 @@ pub trait AuthenticationService<'a> {
 
 #[async_trait]
 impl<'a> AuthenticationService<'a> for Authentication<'a> {
-    fn new(telegram_bot: &'a TelegramBot) -> Authentication<'a> {
+    fn new(telegram_bot: &'a TelegramBot) -> Self {
         Authentication { telegram_bot }
     }
 

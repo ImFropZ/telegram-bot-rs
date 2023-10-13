@@ -1,6 +1,6 @@
 pub struct File {
-    file_id: String,
-    file_unique_id: String,
-    file_size: Option<u32>,
-    file_path: Option<String>,
+    pub file_id: String,
+    pub file_unique_id: String,
+    pub file_size: Option<u32>,
+    pub file_path: Option<String>,
 }

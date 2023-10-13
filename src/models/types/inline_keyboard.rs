@@ -1,6 +1,6 @@
 use super::{
     game::CallbackGame, login_url::LoginUrl,
-    switch_inline_query_chosen_chat::SwitchInlineQueryChosenChat, web_app_info::WebAppInfo,
+    switch_inline_query_chosen_chat::SwitchInlineQueryChosenChat, web_app::WebAppInfo,
 };
 
 pub struct InlineKeyboardMarkup {

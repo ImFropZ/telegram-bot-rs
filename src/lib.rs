@@ -23,7 +23,7 @@ mod telegram_bot {
 
     #[async_trait]
     impl TelegramBotService for TelegramBot {
-        fn new(app_id: String) -> TelegramBot {
+        fn new(app_id: String) -> Self {
             TelegramBot { app_id }
         }
 

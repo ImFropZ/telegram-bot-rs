@@ -1,4 +1,4 @@
-use super::{message_entity::MessageEntity, animation::Animation, photo_size::PhotoSize};
+use super::{animation::Animation, message::MessageEntity, photo_size::PhotoSize, user::User};
 
 pub struct Game {
     pub title: String,
@@ -25,7 +25,7 @@ pub struct CallbackGame {
     pub disable_edit_message: Option<bool>,
     pub chat_id: Option<i64>,
     pub message_id: Option<i32>,
-    pub inline_message_id: Option<String>,
+    pub inline_message_id: Option<String>
 }
 
 pub struct SetGameScore {

@@ -7,21 +7,25 @@ use super::{
     document::Document,
     forum_topic::{ForumTopicClosed, ForumTopicCreated, ForumTopicEdited, ForumTopicReopened},
     game::Game,
+    general_forum_topic::{GeneralForumTopicHidden, GeneralForumTopicUnhidden},
     inline_keyboard::InlineKeyboardMarkup,
     location::Location,
+    passport::PassportData,
+    payments::{Invoice, SuccessfulPayment},
     photo_size::PhotoSize,
     poll::Poll,
     proximity_alert_triggered::ProximityAlertTriggered,
+    sticker::Sticker,
     story::Story,
-    user::User,
+    user::{User, UserShared},
     venue::Venue,
-    video::Video,
-    video_chat::{
-        VideoChatEnded, VideoChatParticipantsInvited, VideoChatScheduled, VideoChatStarted,
+    video::{
+        Video, VideoChatEnded, VideoChatParticipantsInvited, VideoChatScheduled, VideoChatStarted,
+        VideoNote,
     },
-    video_note::VideoNote,
     voice::Voice,
-    web_app_data::WebAppData,
+    web_app::WebAppData,
+    write_access_allowed::WriteAccessAllowed,
 };
 
 pub enum MessageEntityType {

@@ -1,6 +1,11 @@
-use super::{
-    location::Location, message::Message, user::User, Type,
-};
+use super::{location::Location, message::Message, user::User};
+
+pub enum Type {
+    Private,
+    Group,
+    Supergroup,
+    Channel,
+}
 
 pub struct Chat {
     pub id: i64,

@@ -1,4 +1,4 @@
-use super::web_app_info::WebAppInfo;
+use super::web_app::WebAppInfo;
 
 pub enum MenuButton {
     Commands {

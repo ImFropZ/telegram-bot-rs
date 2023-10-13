@@ -1,3 +1,5 @@
+use super::photo_size::PhotoSize;
+
 pub struct Document {
     file_id: String,
     file_unique_id: String,
