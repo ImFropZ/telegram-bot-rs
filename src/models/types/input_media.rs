@@ -1,0 +1,53 @@
+use super::message_entity::MessageEntity;
+
+pub enum InputMedia {
+    Photo {
+        pub r#type: String,
+        pub media: String,
+        pub caption: Option<String>,
+        pub parse_mode: Option<String>,
+        pub caption_entities: Option<Vec<MessageEntity>>,
+        pub has_spoilers: Option<bool>,
+    },
+    Document {
+        pub r#type: String,
+        pub media: String,
+        pub caption: Option<String>,
+        pub parse_mode: Option<String>,
+        pub caption_entities: Option<Vec<MessageEntity>>,
+        pub disable_content_type_detection: Option<bool>,
+    },
+    Audio {
+        pub r#type: String,
+        pub media: String,
+        pub caption: Option<String>,
+        pub parse_mode: Option<String>,
+        pub caption_entities: Option<Vec<MessageEntity>>,
+        pub duration: Option<i32>,
+        pub performer: Option<String>,
+        pub title: Option<String>,
+    },
+    Animation {
+        pub r#type: String,
+        pub media: String,
+        pub caption: Option<String>,
+        pub parse_mode: Option<String>,
+        pub caption_entities: Option<Vec<MessageEntity>>,
+        pub width: Option<i32>,
+        pub height: Option<i32>,
+        pub duration: Option<i32>,
+        pub has_spoilers: Option<bool>,
+    },
+    Video {
+        pub r#type: String,
+        pub media: String,
+        pub caption: Option<String>,
+        pub parse_mode: Option<String>,
+        pub caption_entities: Option<Vec<MessageEntity>>,
+        pub width: Option<i32>,
+        pub height: Option<i32>,
+        pub duration: Option<i32>,
+        pub supports_streaming: Option<bool>,
+        pub has_spoilers: Option<bool>,
+    },
+}

@@ -1,7 +1,48 @@
 use super::{
-    animation::Animation, chat::Chat, message_entity::MessageEntity, photo_size::PhotoSize,
+    animation::Animation,
+    audio::Audio,
+    chat::Chat,
+    contact::Contact,
+    dice::Dice,
+    document::Document,
+    forum_topic::{ForumTopicClosed, ForumTopicCreated, ForumTopicEdited, ForumTopicReopened},
+    game::Game,
+    inline_keyboard::InlineKeyboardMarkup,
+    location::Location,
+    photo_size::PhotoSize,
+    poll::Poll,
+    proximity_alert_triggered::ProximityAlertTriggered,
+    story::Story,
     user::User,
+    venue::Venue,
+    video::Video,
+    video_chat::{
+        VideoChatEnded, VideoChatParticipantsInvited, VideoChatScheduled, VideoChatStarted,
+    },
+    video_note::VideoNote,
+    voice::Voice,
+    web_app_data::WebAppData,
 };
+
+pub enum MessageEntityType {
+    Mention,
+    Hashtag,
+    Cashtag,
+    BotCommand,
+    Url,
+    Email,
+    PhoneNumber,
+    Bold,
+    Italic,
+    Underline,
+    Strikethrough,
+    Spoiler,
+    Code,
+    Pre,
+    TextLink,
+    TextMention,
+    CustomEmoji,
+}
 
 pub struct Message {
     message_id: u32,
@@ -64,15 +105,29 @@ pub struct Message {
     passport_data: Option<PassportData>,
     proximity_alert_triggered: Option<ProximityAlertTriggered>,
     forum_topic_created: Option<ForumTopicCreated>,
-    forum_topic_edit: Option<ForumTopicEdit>,
+    forum_topic_edit: Option<ForumTopicEdited>,
     forum_topic_closed: Option<ForumTopicClosed>,
     forum_topic_reopened: Option<ForumTopicReopened>,
-    general_forum_topic_hidden: Option<GeneralForumnTopicHidden>,
-    general_forum_topic_unhidden: Option<GeneralForumnTopicUnhidden>,
+    general_forum_topic_hidden: Option<GeneralForumTopicHidden>,
+    general_forum_topic_unhidden: Option<GeneralForumTopicUnhidden>,
     video_chat_scheduled: Option<VideoChatScheduled>,
     video_chat_started: Option<VideoChatStarted>,
     video_chat_ended: Option<VideoChatEnded>,
     video_chat_participants_invited: Option<VideoChatParticipantsInvited>,
     web_app_data: Option<WebAppData>,
     reply_markup: Option<InlineKeyboardMarkup>,
+}
+
+pub struct MessageEntity {
+    pub r#type: MessageEntityType,
+    pub offset: i32,
+    pub length: i32,
+    pub url: Option<String>,
+    pub user: Option<User>,
+    pub language: Option<String>,
+    pub custom_emoji_id: Option<String>,
+}
+
+pub struct MessageAutoDeleteTimerChanged {
+    message_auto_delete_time: i32,
 }
