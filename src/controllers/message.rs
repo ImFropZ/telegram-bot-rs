@@ -1,9 +1,9 @@
 use async_trait::async_trait;
-use reqwest::{ClientBuilder, Error};
+use reqwest::Error;
 
 use crate::{
     models::{
-        telegram_response::{self, TelegramResponse},
+        telegram_response::TelegramResponse,
         types::message::{Message as MessageType, SendMessage},
     },
     telegram_bot::{TelegramBot, TelegramBotService},
@@ -42,8 +42,6 @@ impl<'a> MessageService<'a> for Message<'a> {
 
         let response = request.send().await?;
         let telegram_response_message: TelegramResponse<MessageType> = response.json().await?;
-
-        print!("{:?}", telegram_response_message);
 
         return Ok(telegram_response_message.result);
     }
