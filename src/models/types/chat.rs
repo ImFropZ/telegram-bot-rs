@@ -1,5 +1,30 @@
+use serde::{Deserialize, Serialize};
+
 use super::{location::Location, message::Message, user::User};
 
+#[derive(Serialize, Deserialize, Debug)]
+pub enum ChatId {
+    Int(i64),
+    String(String),
+}
+
+impl Default for ChatId {
+    fn default() -> Self {
+        ChatId::Int(-1)
+    }
+}
+
+impl std::fmt::Display for ChatId {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            ChatId::Int(id) => write!(f, "{}", id),
+            ChatId::String(id) => write!(f, "{}", id),
+        }
+    }
+}
+
+#[derive(Serialize, Deserialize, Debug)]
+#[serde(rename_all = "snake_case")]
 pub enum Type {
     Private,
     Group,
@@ -7,6 +32,7 @@ pub enum Type {
     Channel,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Chat {
     pub id: i64,
     pub r#type: Type,
@@ -39,6 +65,7 @@ pub struct Chat {
     pub location: Option<ChatLocation>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ChatPhoto {
     pub small_file_id: String,
     pub small_file_unique_id: String,
@@ -46,11 +73,13 @@ pub struct ChatPhoto {
     pub big_file_unique_id: String,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ChatShared {
     pub request_id: i32,
     pub chat_id: i32,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub enum ChatMember {
     Owner {
         status: String,
@@ -113,6 +142,7 @@ pub enum ChatMember {
     },
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ChatMemberUpdated {
     pub chat: Chat,
     pub from: User,
@@ -123,11 +153,13 @@ pub struct ChatMemberUpdated {
     pub via_chat_folder_invite_link: Option<bool>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ChatLocation {
-pub location: Location,
-pub address: String,
+    pub location: Location,
+    pub address: String,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ChatPermissions {
     pub can_send_messages: Option<bool>,
     pub can_send_audios: Option<bool>,
@@ -145,6 +177,7 @@ pub struct ChatPermissions {
     pub can_manage_topics: Option<bool>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ChatInviteLink {
     pub invite_link: String,
     pub creator: User,
@@ -157,6 +190,7 @@ pub struct ChatInviteLink {
     pub pending_join_request_count: Option<i32>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ChatJoinRequest {
     pub chat: Chat,
     pub from: User,
@@ -166,6 +200,7 @@ pub struct ChatJoinRequest {
     pub invite_link: Option<String>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ChatAdministratorRights {
     pub is_anonymous: bool,
     pub can_manage_chat: bool,

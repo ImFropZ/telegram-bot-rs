@@ -1,14 +1,16 @@
+use serde::{Deserialize, Serialize};
+
 use super::{
     animation::Animation,
     audio::Audio,
-    chat::Chat,
+    chat::{Chat, ChatId},
     contact::Contact,
     dice::Dice,
     document::Document,
     forum_topic::{ForumTopicClosed, ForumTopicCreated, ForumTopicEdited, ForumTopicReopened},
     game::Game,
     general_forum_topic::{GeneralForumTopicHidden, GeneralForumTopicUnhidden},
-    inline_keyboard::InlineKeyboardMarkup,
+    keyboard::InlineKeyboardMarkup,
     location::Location,
     passport::PassportData,
     payments::{Invoice, SuccessfulPayment},
@@ -28,6 +30,7 @@ use super::{
     write_access_allowed::WriteAccessAllowed,
 };
 
+#[derive(Serialize, Deserialize, Debug)]
 pub enum MessageEntityType {
     Mention,
     Hashtag,
@@ -48,10 +51,11 @@ pub enum MessageEntityType {
     CustomEmoji,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Message {
     pub message_id: u32,
     pub message_thread_id: Option<u32>,
-    pub from: User,
+    pub from: Option<User>,
     pub sender_chat: Option<Chat>,
     pub date: i64,
     pub chat: Chat,
@@ -122,6 +126,7 @@ pub struct Message {
     pub reply_markup: Option<InlineKeyboardMarkup>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct MessageEntity {
     pub r#type: MessageEntityType,
     pub offset: i32,
@@ -132,6 +137,21 @@ pub struct MessageEntity {
     pub custom_emoji_id: Option<String>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct MessageAutoDeleteTimerChanged {
     pub message_auto_delete_time: i32,
+}
+
+#[derive(Default, Serialize, Deserialize)]
+pub struct SendMessage {
+    pub chat_id: ChatId,
+    pub message_thread_id: Option<u32>,
+    pub text: String,
+    pub parse_mode: Option<String>,
+    pub entities: Option<Vec<MessageEntity>>,
+    pub disable_web_page_preview: Option<bool>,
+    pub disable_notification: Option<bool>,
+    pub reply_to_message_id: Option<u32>,
+    pub allow_sending_without_reply: Option<bool>,
+    pub reply_markup: Option<InlineKeyboardMarkup>,
 }

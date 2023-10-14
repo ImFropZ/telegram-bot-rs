@@ -1,5 +1,8 @@
+use serde::{Deserialize, Serialize};
+
 use super::location::Location;
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Venue {
     pub location: Location,
     pub title: String,

@@ -4,7 +4,10 @@ mod tests;
 
 mod telegram_bot {
     use crate::controllers::authentication::{Authentication, AuthenticationService};
-    use crate::models::{get_me::GetMe, get_update::GetUpdate};
+    use crate::controllers::message::{Message, MessageService};
+    use crate::models::get_update::GetUpdate;
+    use crate::models::types::message::{Message as MessageType, SendMessage};
+    use crate::models::types::user::User;
     use async_trait::async_trait;
     use reqwest;
     use reqwest::Error;
@@ -17,8 +20,9 @@ mod telegram_bot {
     pub trait TelegramBotService {
         fn new(app_id: String) -> TelegramBot;
         fn get_app_id(&self) -> String;
-        async fn authenticate(&self) -> Result<GetMe, Error>;
+        async fn authenticate(&self) -> Result<User, Error>;
         async fn get_chats(&self) -> Result<Vec<GetUpdate>, Error>;
+        async fn send_message(&self, send_message: SendMessage) -> Result<MessageType, Error>;
     }
 
     #[async_trait]
@@ -31,7 +35,7 @@ mod telegram_bot {
             return self.app_id.clone();
         }
 
-        async fn authenticate(&self) -> Result<GetMe, Error> {
+        async fn authenticate(&self) -> Result<User, Error> {
             Authentication::new(self).authenticate().await
         }
 
@@ -40,6 +44,10 @@ mod telegram_bot {
             let response = reqwest::Client::new().get(&endpoint).send().await?;
 
             return response.json::<Vec<GetUpdate>>().await;
+        }
+
+        async fn send_message(&self, send_message: SendMessage) -> Result<MessageType, Error> {
+            Message::new(self).send_message(send_message).await
         }
     }
 }

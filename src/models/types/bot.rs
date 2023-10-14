@@ -1,3 +1,5 @@
+use super::chat::ChatId;
+
 pub struct BotName {
     pub name: String,
 }
@@ -8,11 +10,6 @@ pub struct BotDescription {
 
 pub struct BotShortDescription {
     pub short_description: String,
-}
-
-pub enum ChatId {
-    Int(i64),
-    String(String),
 }
 
 pub enum BotCommandScope {

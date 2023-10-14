@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 struct User {
     id: i64,
     is_bot: bool,
@@ -10,7 +10,7 @@ struct User {
     language_code: String,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 struct Chat {
     id: i64,
     first_name: String,
@@ -19,14 +19,14 @@ struct Chat {
     r#type: String,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 struct Entity {
     offset: i64,
     length: i64,
     r#type: String,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 struct Message {
     message_id: u32,
     message_thread_id: u32,
@@ -34,9 +34,12 @@ struct Message {
     chat: Chat,
     date: i64,
     text: String,
+    forward_from: User,
+    forward_from_chat: Chat,
+    forward_from_message_id: u32,
 }
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct GetUpdate {
     update_id: u64,
     message: Message,

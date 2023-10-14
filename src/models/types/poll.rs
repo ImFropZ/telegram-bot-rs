@@ -1,5 +1,8 @@
+use serde::{Deserialize, Serialize};
+
 use super::{chat::Chat, message::MessageEntity, user::User};
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Poll {
     pub id: String,
     pub question: String,
@@ -16,6 +19,7 @@ pub struct Poll {
     pub close_date: Option<u32>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct PollAnswer {
     pub poll_id: String,
     pub voter_chat: Chat,
@@ -23,6 +27,7 @@ pub struct PollAnswer {
     pub option_ids: Vec<u32>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct PollOption {
     pub text: String,
     pub voter_count: u32,

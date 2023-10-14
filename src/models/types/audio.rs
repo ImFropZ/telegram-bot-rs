@@ -1,5 +1,8 @@
+use serde::{Deserialize, Serialize};
+
 use super::photo_size::PhotoSize;
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Audio {
     pub file_id: String,
     pub file_unique_id: String,

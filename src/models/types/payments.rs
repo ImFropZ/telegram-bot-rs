@@ -1,3 +1,6 @@
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Invoice {
     pub title: String,
     pub description: String,
@@ -6,6 +9,7 @@ pub struct Invoice {
     pub total_amount: u32,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct SuccessfulPayment {
     pub currency: String,
     pub total_amount: u32,
@@ -16,6 +20,7 @@ pub struct SuccessfulPayment {
     pub provider_payment_charge_id: String,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct OrderInfo {
     pub name: Option<String>,
     pub phone_number: Option<String>,
@@ -23,6 +28,7 @@ pub struct OrderInfo {
     pub shipping_address: Option<ShippingAddress>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct ShippingAddress {
     pub country_code: String,
     pub state: String,

@@ -1,3 +1,6 @@
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct SwitchInlineQueryChosenChat {
     pub query: Option<String>,
     pub allow_user_chats: Option<bool>,

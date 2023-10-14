@@ -1,5 +1,8 @@
+use serde::{Deserialize, Serialize};
+
 use super::photo_size::PhotoSize;
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct User {
     pub id: u64,
     pub is_bot: bool,
@@ -14,11 +17,13 @@ pub struct User {
     pub supports_inline_queries: Option<bool>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct UserShared {
     pub request_id: i32,
     pub user_id: i32,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct UserProfilePhotos {
     pub total_count: i64,
     pub photos: Vec<Vec<PhotoSize>>,

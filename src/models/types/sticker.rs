@@ -1,5 +1,8 @@
-use super::{photo_size::PhotoSize, file::File};
+use serde::{Deserialize, Serialize};
 
+use super::{file::File, photo_size::PhotoSize};
+
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Sticker {
     pub file_id: String,
     pub file_unique_id: String,
@@ -18,10 +21,10 @@ pub struct Sticker {
     pub file_size: Option<i32>,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct MaskPosition {
     pub point: String,
     pub x_shift: f32,
     pub y_shift: f32,
     pub scale: f32,
 }
-
